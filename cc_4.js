@@ -45,10 +45,10 @@ for (element of product) // used switch inside loop
 
 
 product.forEach(element => {
-    const name = element[0]
-    const category = element[1]
-    const price = element[2]
-    const inventory = element[3]
+    const name = element.name
+    const category = element.category
+    const price = element.price
+    const inventory = element.stock
 
     console.log(`${name} | ${category} | $${price} | Stock: ${inventory}`)
 
@@ -80,9 +80,9 @@ for (element1 of customer) {//entire customer array
 let subtotal = 0
     for (element2 of element1[1]) {//(hopefully) nested customer item array
         for (element3 of product) {//entire product array
-if (element2 == element3[0]) {
-    subTotal += element3[2]
-    element3[3]--;
+if (element2 == element3.name) {
+    subTotal += element3.price
+    element3.stock--;
     break;
 }
         }
