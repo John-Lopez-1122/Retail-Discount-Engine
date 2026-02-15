@@ -1,17 +1,17 @@
 let product = [  // [name, category, price, inventory]
-    ["10x pack pens", "Office supplies", 4.99, 102],
-    ["Oreos","groceries", 5.99, 54],
-    ["6x pack T shirts", "apparel", 4.99, 86],
-    ["Computer Mouse", "electronics", 14.99, 29],
-    ["Lucky Strike Cigarettes", "Cigarettes", 9.99, 17]
+    {name: "10x pack pens", category: "Office supplies", price: 4.99, stock: 102},
+    {name: "Oreos", category: "groceries", price: 5.99, stock: 54},
+    {name: "6x pack T shirts", category: "apparel", price: 4.99, stock: 86},
+    {name: "Computer Mouse", category: "electronics", price: 14.99, stock: 29},
+    {name: "Lucky Strike Cigarettes", category: "Cigarettes", price: 9.99, stock: 17}
 ]
 
 
 product.forEach(element => {
-    const name = element[0]
-    const category = element[1]
-    const price = element[2]
-    const inventory = element[3]
+    const name = element.name
+    const category = element.category
+    const price = element.price
+    const inventory = element.stock
 
     console.log(`${name} | ${category} | $${price} | Stock: ${inventory}`)
 
@@ -24,22 +24,22 @@ console.log("        ") //couldnt find a better line break solution
 
 
 for (element of product) // used switch inside loop
-    switch (element[1]){
+    switch (element.category){
     
     case "electronics":
-        element[2] *= .8
+        element.price *= .8
         break;
 
     case "apparel":
-        element[2] *= .85
+        element.price *= .85
         break;
 
     case "groceries":
-        element[2] *= .9
+        element.price *= .9
         break;
     
     case "household":
-        element[2] *= .9
+        element.price *= .9
         break;
     }
 
@@ -58,16 +58,15 @@ console.log("        ")
 
 let customerType = ("senior")
 
-let discount = null
-let total = null
-
+let discount = 1
+let subTotal = null
 
 if (customerType == "student")
     discount = .05 && console.log(`5% Discount!!!`)
 else if (customerType == "senior")
     discount = .07 && console.log(`7% Discount!!!`)
 else if (customerType == "regular")
-    discount = null && console.log(`No Discount : (`)
+    discount = 1 && console.log(`No Discount : (`)
 
 console.log("        ")
 
@@ -77,8 +76,29 @@ customer = [  // customer number, items, type
     [77725,["10x pack pens", "6x pack T shirts", "Computer Mouse"], "student"]
 ]
 
-for (element1 of customer)
-    for (element2 of product)
-if (element1[1] == element2[0])
-    total = element2[2]
-    console.log(total)
+for (element1 of customer) {//entire customer array
+let subtotal = 0
+    for (element2 of element1[1]) {//(hopefully) nested customer item array
+        for (element3 of product) {//entire product array
+if (element2 == element3[0]) {
+    subTotal += element3[2]
+    element3[3]--;
+    break;
+}
+        }
+    }
+
+console.log(`Customer Number: ${element1[0]}`)
+console.log(`Sub Total: $${subTotal.toFixed(2)}`)
+let discount = 0
+if (element1[2] == "student")
+    discount = .05
+else if (element1[2] == "senior")
+    discount = .07
+else if (element1[2] == "regular")
+    discount = 0
+console.log(`Discount rate: ${discount}`)
+total = subTotal * (1-discount)
+console.log(`Total: $${total.toFixed(2)}`)
+console.log("         ")
+}
