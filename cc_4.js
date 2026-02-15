@@ -59,6 +59,8 @@ console.log("        ")
 let customerType = ("senior")
 
 let discount = null
+let total = null
+
 
 if (customerType == "student")
     discount = .05 && console.log(`5% Discount!!!`)
@@ -66,3 +68,17 @@ else if (customerType == "senior")
     discount = .07 && console.log(`7% Discount!!!`)
 else if (customerType == "regular")
     discount = null && console.log(`No Discount : (`)
+
+console.log("        ")
+
+customer = [  // customer number, items, type
+    [32133,["10x pack pens", "Computer Mouse"], "regular"],
+    [73456,["Oreos", "Lucky Strike Cigarettes"], "senior"],
+    [77725,["10x pack pens", "6x pack T shirts", "Computer Mouse"], "student"]
+]
+
+for (element1 of customer)
+    for (element2 of product)
+if (element1[1] == element2[0])
+    total = element2[2]
+    console.log(total)
