@@ -17,13 +17,13 @@ product.forEach(element => {
 
 });
 
-console.log("        ")
+console.log("        ") //couldnt find a better line break solution
 
 
 
 
 
-for (element of product)
+for (element of product) // used switch inside loop
     switch (element[1]){
     
     case "electronics":
@@ -54,10 +54,15 @@ product.forEach(element => {
 
 });
 
+console.log("        ")
 
+let customerType = ("senior")
 
+let discount = null
 
-//    "electronics": 20% off
-//    "apparel": 15% off
-//    "groceries" and "household": 10% off
-//    default: No discount
+if (customerType == "student")
+    discount = .05 && console.log(`5% Discount!!!`)
+else if (customerType == "senior")
+    discount = .07 && console.log(`7% Discount!!!`)
+else if (customerType == "regular")
+    discount = null && console.log(`No Discount : (`)
