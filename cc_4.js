@@ -102,3 +102,16 @@ total = subTotal * (1-discount)
 console.log(`Total: $${total.toFixed(2)}`)
 console.log("         ")
 }
+
+for (let key in product[0]) {
+    console.log(key + ": " + product[0][key]);
+}
+
+console.log("       ")
+
+for (el of product) {
+    for ([key, value] of Object.entries(el)) {
+        console.log(key + ": " + value)
+    }
+        console.log("      ")
+}
