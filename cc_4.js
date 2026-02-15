@@ -19,11 +19,30 @@ product.forEach(element => {
 
 console.log("        ")
 
+
+
+
+
 for (element of product)
-    if (element[1] == "electronics"){
+    switch (element[1]){
+    
+    case "electronics":
         element[2] *= .8
-        break
+        break;
+
+    case "apparel":
+        element[2] *= .85
+        break;
+
+    case "groceries":
+        element[2] *= .9
+        break;
+    
+    case "household":
+        element[2] *= .9
+        break;
     }
+
 
 product.forEach(element => {
     const name = element[0]
